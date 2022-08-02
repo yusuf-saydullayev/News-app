@@ -1,7 +1,8 @@
 {
   "expo": {
+    "owner": "yusufwebdev",
     "name": "news-app",
-    "slug": "news-app",
+    "slug": "newsfi",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
