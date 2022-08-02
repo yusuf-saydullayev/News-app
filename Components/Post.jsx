@@ -1,15 +1,20 @@
 import { Text, View, Image, StyleSheet, TouchableOpacity } from "react-native";
+import { useNavigate } from "react-router-dom"
 
-const Post = ({ title, imageUrl, text, createdAt }) => {
+const Post = ({ title, imageUrl, id, newsSource, description }) => {
+  const navigate = useNavigate();
+  const pressHander = () => {
+    navigate(`/fullpost/${id}`, { state: { title, imageUrl, description } })
+  }
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={pressHander}>
       <View style={styles.Container}>
         <Image style={styles.Picture} source={{ uri: imageUrl }} />
         <View style={styles.PostText}>
           <Text numberOfLines={2} style={styles.Title}>
             {title}
           </Text>
-          <Text style={styles.date}>{createdAt}</Text>
+          <Text style={styles.source}>{newsSource}</Text>
         </View>
       </View>
     </TouchableOpacity>
@@ -52,6 +57,10 @@ const styles = StyleSheet.create({
     fontWeight: "100",
     color: "white",
   },
+  source: {
+    fontSize: 10,
+    color: 'red',
+  }
 });
 
 export default Post;

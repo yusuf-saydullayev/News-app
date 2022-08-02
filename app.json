@@ -25,7 +25,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#3F33FF"
-      }
+      },
+      "package": "com.yusufwebdev.newsfi"
     },
     "web": {
       "favicon": "./assets/favicon.png"
