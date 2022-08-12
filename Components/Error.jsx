@@ -1,4 +1,4 @@
-import { Text, Alert, StyleSheet, View } from 'react-native'
+import { Text, StyleSheet, View } from 'react-native'
 import { Link } from "react-router-native";
 
 const Error = () => {

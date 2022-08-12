@@ -1,10 +1,10 @@
 import { Text, View, Image, StyleSheet, TouchableOpacity } from "react-native";
-import { useNavigate } from "react-router-dom"
+import { useNavigation } from '@react-navigation/native';
 
-const Post = ({ title, imageUrl, id, newsSource, description }) => {
-  const navigate = useNavigate();
+const Post = ({ title, imageUrl, newsSource, description }) => {
+  const navigation = useNavigation();
   const pressHander = () => {
-    navigate(`/fullpost/${id}`, { state: { title, imageUrl, description } })
+    navigation.navigate('Fullpost', { title, imageUrl, description })
   }
   return (
     <TouchableOpacity onPress={pressHander}>

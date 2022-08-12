@@ -1,23 +1,19 @@
-import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
-import { useLocation } from "react-router-dom";
-import { Link } from "react-router-native";
+import { Text, StyleSheet, Image, ScrollView, SafeAreaView } from "react-native";
 
-const FullPost = () => {
-  const { state } = useLocation();
-  const { title, imageUrl, description } = state;
+const FullPost = ({ route, navigation }) => {
+
+  const { title, imageUrl, description } = route.params
   return (
-    <View style={styles.Container}>
+    <SafeAreaView style={styles.Container}>
       <ScrollView>
         <Text style={styles.Head}>{title}</Text>
         <Image style={styles.postImg} source={{ uri: imageUrl }} />
         <Text style={styles.postText}>{description}</Text>
-        <Link to={'/'}>
-          <Text style={styles.button}>
-            Back to Home
-          </Text>
-        </Link>
+        <Text style={styles.button} onPress={() => navigation.goBack()} >
+          Back to Home
+        </Text>
       </ScrollView>
-    </View>
+    </SafeAreaView>
   )
 }
 
@@ -26,6 +22,7 @@ const styles = StyleSheet.create({
   Container: {
     padding: 10,
     alignItems: 'center',
+    marginTop: 35,
   },
   Head: {
     fontSize: 20,

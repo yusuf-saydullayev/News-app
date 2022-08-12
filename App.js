@@ -1,26 +1,21 @@
-import { StyleSheet, SafeAreaView, View, Text } from "react-native";
-import { NativeRouter } from "react-router-native";
-import { Routes, Route } from "react-router-dom";
+import { NavigationContainer } from '@react-navigation/native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from "expo-status-bar";
 import Home from "./Screens/Home";
 import FullPost from "./Screens/FullPost";
 
 export default function App() {
+  const Stack = createNativeStackNavigator();
   return (
-    <NativeRouter>
-      <SafeAreaView style={styles.container}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/fullpost/:id" element={<FullPost />} />
-        </Routes>
-        <StatusBar theme="auto" />
-      </SafeAreaView>
-    </NativeRouter>
+    <NavigationContainer>
+      <SafeAreaProvider>
+          <Stack.Navigator>
+            <Stack.Screen name='Home' component={Home} options={{ headerShown: false }} />
+            <Stack.Screen name='Fullpost' component={FullPost} options={{ headerShown: false }} />
+          </Stack.Navigator>
+      </SafeAreaProvider>
+      <StatusBar theme="auto" />
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    marginTop: 30,
-  },
-});
